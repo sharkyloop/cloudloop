@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>cloudloop · wishes granted by Sharkyloop</title>
+<meta name="description" content="Wishes granted by @sharkyloop. Reply to the wish post and Sharky builds what it can.">
+<style>
+  :root { --bg:#f4f8ff; --fg:#0b1b3a; --mute:#5a6b8c; --card:#fff; --line:#cfdcf5; --accent:#1d5cff; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#081226; --fg:#e8efff; --mute:#93a4c8; --card:#0f1d3a; --line:#22345e; --accent:#7aa2ff; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif; }
+  main { max-width:680px; margin:0 auto; padding:48px 20px 64px; }
+  h1 { font-size:2rem; margin:0 0 8px; }
+  p.lead { color:var(--mute); margin:0 0 28px; }
+  a { color:var(--accent); }
+  ul { list-style:none; padding:0; margin:0; display:grid; gap:12px; }
+  li { background:var(--card); border:2px dashed var(--line); border-radius:16px; padding:14px 16px; }
+  li a.title { font-weight:700; text-decoration:none; }
+  li small { display:block; color:var(--mute); margin-top:2px; }
+  .empty { color:var(--mute); border:2px dashed var(--line); border-radius:16px; padding:20px; text-align:center; }
+</style>
+</head>
+<body>
+<main>
+  <h1>🦈♾️ cloudloop</h1>
+  <p class="lead">Wishes granted by <a href="https://x.com/sharkyloop">@sharkyloop</a>. Want one? <a href="https://x.com/sharkyloop/status/2124192119237816321">Reply to the wish post</a>.</p>
+  <ul id="list"></ul>
+  <p class="empty" id="empty">No wishes granted yet. Be the first.</p>
+</main>
+<script>
+fetch("wishes.json", { cache: "no-store" }).then(r => r.json()).then(items => {
+  if (!items.length) return;
+  document.getElementById("empty").hidden = true;
+  const list = document.getElementById("list");
+  for (const w of items.slice().reverse()) {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.className = "title"; a.href = w.path; a.textContent = w.title;
+    const s = document.createElement("small");
+    s.textContent = "for @" + w.author + " · " + w.date;
+    li.append(a, s); list.append(li);
+  }
+}).catch(() => {});
+</script>
+</body>
+</html>
