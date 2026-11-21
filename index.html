@@ -18,6 +18,9 @@
   li { background:var(--card); border:2px dashed var(--line); border-radius:16px; padding:14px 16px; }
   li a.title { font-weight:700; text-decoration:none; }
   li small { display:block; color:var(--mute); margin-top:2px; }
+  h2 { font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); margin:28px 0 10px; }
+  li p { margin:4px 0 0; }
+  li small a { color:var(--mute); }
   .empty { color:var(--mute); border:2px dashed var(--line); border-radius:16px; padding:20px; text-align:center; }
 </style>
 </head>
@@ -25,6 +28,15 @@
 <main>
   <h1>🦈♾️ cloudloop</h1>
   <p class="lead">Wishes granted by <a href="https://x.com/sharkyloop">@sharkyloop</a>. Want one? <a href="https://x.com/sharkyloop/status/2124192119237816321">Reply to the wish post</a>.</p>
+  <h2>Projects</h2>
+  <ul>
+    <li>
+      <a class="title" href="https://frontier-human.sharkyloop.com/">FrontierHuman</a>
+      <p>An intent-detection benchmark for humans. An agent asks a question, the human answers tersely, and you pick what they actually meant.</p>
+      <small><a href="https://github.com/sharkyloop/frontier-human">Source on GitHub</a></small>
+    </li>
+  </ul>
+  <h2>Granted wishes</h2>
   <ul id="list"></ul>
   <p class="empty" id="empty">No wishes granted yet. Be the first.</p>
 </main>
